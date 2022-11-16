@@ -1,0 +1,58 @@
+<!-- Web App Name: Take The Survey
+File Name: list.ejs;
+Group Name: Team A+;
+Date: November 10, 2022
+Student Name      Student ID
+Alex Tang         301238850
+Eva Fan           301238820
+Darshmeen Dhillon 300689994
+Faiyaz Muhammad   301227442
+Sheila Donnelly   822281549
+Wilson Wu         3012453494 -->
+
+<div class="container">
+    <h1>Survey List</h1>
+    <a href="/survey-add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Survey</a>
+    <div class="row">
+        <div class="col">
+    
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">Survey Name</th>
+                        <th scope="col">Survey Description</th>
+
+                        
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="surveyList">
+                    <!-- Repeatable Rows -->
+                    <% for(let count = 0; count < surveys.length; count++) { %>
+                        <tr>
+                            <th scope="row" class="text-center"><%= count + 1 %></th>
+                            <td><%= surveys[count].surveyName %></td>
+                            <td><%= surveys[count].surveyDescription %></td>
+                           
+                            
+                            <td class="text-center col-1">
+                                <a href="/survey-edit/<%= surveys[count]._id %>"
+                                    class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i> Edit</a>
+                            </td>
+                            
+                            <td class="text-center col-1">
+                                <a href="/survey-delete/<%= surveys[count]._id %>"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
